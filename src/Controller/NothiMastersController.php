@@ -6,23 +6,21 @@ use Cake\Event\Event;
 use Cake\Network\Exception\NotFoundException;
 use Cake\ORM\TableRegistry;
 
-class NothiController extends AppController
+class NothiMastersController extends AppController
 {
 	public function index()
 	{
-		$nothi = TableRegistry::get('Nothi');
+		$nothi = TableRegistry::get('NothiMasters');
 		$query = $nothi->find('all');
 		$this->set(compact('query'));
 	}
 	
 	public function view()
 	{
-	
+
 	}	
     public function nothiList()
     {
 
     }
-
-	
 }

@@ -1,15 +1,43 @@
 <?php
-	$session = $this->request->session();
-	$menu_items = $session->read('menu_items');
-	$selected_module = $session->read('module_id');
+//	$session = $this->request->session();
+//	$menu_items = $session->read('menu_items');
+//	$selected_module = $session->read('module_id');
+//?>
 
-?>
-<ul class="page-breadcrumb breadcrumb"><!-- ADD CLASS hide for not showing breadcrumb -->
-	<li><a href="<?php echo $this->request->webroot;?>">Home</a><i class="fa fa-circle"></i></li>
-	<li class="active">Menu Manager</li>
-</ul>
-<div class="row">
-	<div class="datatable">
+
+<!--<ul class="page-breadcrumb breadcrumb"><!-- ADD CLASS hide for not showing breadcrumb -->-->
+<!--	<li><a href="--><?php //echo $this->request->webroot;?><!--">Home</a><i class="fa fa-circle"></i></li>-->
+<!--	<li class="active">Menu Manager</li>-->
+<!--</ul>-->
+
+<div class="portlet light">
+	<div class="portlet-title">
+		<div class="caption"><i class="fa fa-table"></i>Nothi List</div>
+		<div class="tools">
+			<a href="javascript:" class="collapse"></a>
+			<a href="#portlet-config" data-toggle="modal" class="config"></a>
+			<a href="javascript:" class="reload"></a>
+			<a href="javascript:" class="remove"></a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<div class="table-toolbar">
+			<div class="row">
+				<div class="col-md-6">
+					<?= $this->Html->link('Add New Nothi', ['action' => 'add'], ['class' => 'btn btn-default']) ?>
+				</div>
+				<div class="col-md-6">
+					<div class="btn-group pull-right">
+						<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i></button>
+						<ul class="dropdown-menu pull-right">
+							<li><a href="#">Print </a></li>
+							<li><a href="#">Save as PDF </a></li>
+							<li><a href="#">Export to Excel </a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -19,18 +47,22 @@
 				</tr>
 			</thead>
 			<tbody role="alert" aria-live="polite" aria-relevant="all">
-				<tr class="odd">
-					<td class="text-center">০৪৬.০১৮.০৩৩.০০.০০.০০৪.২০১৫.০৪৩&nbsp;</td>
-					<td class="text-center">রাস্তা  উন্নয়ন &nbsp;</td>
-					<td class="actions text-center">
-						<a href="http://localhost/projapoti/nothi/nothiList"><i class="fa fa-eye"></i></a>
-						<a href="http://localhost/projapoti/nothi/nothiList"><i class="icon-pencil"></i></a>
-						<a href="http://localhost/projapoti/nothi/nothiList"><i class="icon-eye"></i></a>
-						<form method="post" style="display:none;" id="post_55852eec08d24" name="post_55852eec08d24" action="/nothi/nothiMasters/delete/1"><input type="hidden" value="POST" name="_method"></form><a onclick="if (confirm('Are you sure you want to delete the ০৪৬.০১৮.০৩৩.০০.০০.০০৪.২০১৫.০৪৩?')) { document.post_55852eec08d24.submit(); } event.returnValue = false; return false;" class="role_enable" href="#"><i class="icon-cancel"></i></a>						
-					</td>
-				</tr>
+			<?php
+			foreach ($query as $row):
+			?>
+			<tr>
+				<td class="text-center"><?= h($row->nothi_no) ?></td>
+				<td class="text-center"><?= h($row->subject) ?></td>
+				<td class="actions text-center">
+					<?= $this->Html->link(__(''), ['action' => 'view', $row->id], ['class' => 'fa fa-eye']) ?> |
+					<?= $this->Html->link(__(''), ['action' => 'edit', $row->id], ['class' => 'fa fa-pencil']) ?> |
+					<?= $this->Form->postLink(__(''), ['action' => 'delete', $row->id], ['class' => 'fa fa-trash'], ['confirm' => __('Are you sure you want to delete # {0}?', $row->id)]) ?>
+				</td>
+			</tr>
+			<?php
+			endforeach;
+			?>
 			</tbody>
 		</table>
 	</div>
 </div>
-

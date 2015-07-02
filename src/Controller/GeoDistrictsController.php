@@ -21,14 +21,6 @@ class GeoDistrictsController extends AppController
         $this->set('_serialize', ['geoDistricts']);
     }
 
-//        $geo_district = TableRegistry::get('GeoDistricts');
-//        $query = $geo_district->find('all');
-//        $this->set(compact('query'));
-//
-//        $this->loadModel('GeoDivisions');
-//        $geo_divisions = $this->GeoDivisions->find('all');
-//        $this->set(compact('geo_divisions'));
-
     public function add()
     {
         $this->loadModel('GeoDivisions');
