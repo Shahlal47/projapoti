@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
         <div class="portlet green-meadow box">
             <div class="portlet-title">
                 <div class="caption"><i class="fa fa-cogs"></i>GEO Tree | Division to Thana</div>
@@ -16,10 +16,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6" id="geo_desc_div">
-        </div>
     </div>
-
+    <div class="col-md-7" id="geo_desc_div">
+    </div>
 </div>
 
 <script>

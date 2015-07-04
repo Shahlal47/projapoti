@@ -1,9 +1,10 @@
 
 <?php
-	$session = $this->request->session();
-	$menu_items = $session->read('menu_items');
-	$selected_module = $session->read('module_id');
-?>
+//	$session = $this->request->session();
+//	$menu_items = $session->read('menu_items');
+//	$selected_module = $session->read('module_id');
+//?>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" type="text/css"  href="<?php echo $this->request->webroot;?>projapoti-nothi/css/font-awesome.min.css" />

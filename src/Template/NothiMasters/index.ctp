@@ -41,16 +41,17 @@
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
+					<th class="text-center">Nothi ID</th>
 					<th class="text-center">Nothi No</th>
 					<th class="text-center">Subject</th>
 					<th class="actions text-center"><?php echo __('Actions'); ?></th>
 				</tr>
 			</thead>
 			<tbody role="alert" aria-live="polite" aria-relevant="all">
-			<?php
-			foreach ($query as $row):
-			?>
+
+			<?php foreach ($query as $row): ?>
 			<tr>
+				<td class="text-center"><?= h($row->id) ?></td>
 				<td class="text-center"><?= h($row->nothi_no) ?></td>
 				<td class="text-center"><?= h($row->subject) ?></td>
 				<td class="actions text-center">
@@ -59,9 +60,7 @@
 					<?= $this->Form->postLink(__(''), ['action' => 'delete', $row->id], ['class' => 'fa fa-trash'], ['confirm' => __('Are you sure you want to delete # {0}?', $row->id)]) ?>
 				</td>
 			</tr>
-			<?php
-			endforeach;
-			?>
+			<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
