@@ -59,6 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <link rel="shortcut icon" href="favicon.ico"/>
 <script src="<?php echo $this->request->webroot; ?>assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -147,6 +148,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="<?php echo $this->request->webroot; ?>assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot; ?>assets/admin/pages/scripts/form-validation.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
+
+
 <script>
 jQuery(document).ready(function() {    
    Metronic.init(); // init metronic core componets

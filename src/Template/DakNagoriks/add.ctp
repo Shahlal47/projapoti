@@ -1,3 +1,10 @@
+<?php
+$dakTypes = array();
+foreach($dak_types as $dak_type):
+    $dakTypes[$dak_type->id] = $dak_type['name'];
+endforeach;
+?>
+
 <div class="portlet box green">
     <div class="portlet-title">
         <div class="caption"><i class="fa fa-pencil"></i>Dak Register</div>
@@ -35,7 +42,7 @@
                     <div class="form-group form-horizontal">
                         <label class="control-label col-md-5">National ID</label>
                         <div class="col-md-6">
-                            <?php echo $this->Form->input('national_identity_no', array('label' => false, 'class' =>'form-control')); ?>
+                            <?php echo $this->Form->input('	national_idendity_no', array('label' => false, 'class' =>'form-control')); ?>
                         </div>
                     </div>
                 </div>
@@ -85,17 +92,17 @@
                 </div>
             </div><br>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group form-horizontal">
-                        <label class="control-label col-md-5">Address</label>
-                        <div class="col-md-6">
-                            <?php echo $this->Form->input('address', array('label' => false, 'type' => 'textarea', 'class' =>'form-control')); ?>
+                        <label class="control-label col-md-3">Address</label>
+                        <div class="col-md-7">
+                            <?php echo $this->Form->textarea('address', array('label' => false, 'rows' => '5', 'cols' => '55', 'class' =>'form-control')); ?>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <h3 class="form-section">Dak Information</h3>
+            <h3 class="form-section">Recipient Details </h3>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group form-horizontal">
@@ -144,7 +151,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">Category</label>
                     <div class="col-md-4">
-                        <?php echo $this->Form->input('category_type_id', array('label' => false, 'class' =>'form-control')); ?>
+                        <?php echo $this->Form->input('category_type_id', array('label' => false, 'type' => 'select', 'class' =>'form-control', 'options' => $dakTypes)); ?>
                     </div>
                 </div>
                 <div class="form-group">
@@ -180,8 +187,10 @@
                     <div class="form-group form-horizontal">
                         <label class="control-label col-md-5">File Name</label>
                         <div class="col-md-6">
-                            <?php echo $this->Form->input('', array('label' => false, 'class' =>'form-control', 'disabled' => 'disabled')); ?>
-                            <input type="file" name="file1">
+                            <input type='file' onchange="readURL(this);" name="photo_file" class="form-control"/>
+                            <img id="image" src="#" alt="Upload Your Avatar"/>
+<!--                            --><?php //echo $this->Form->input('', array('label' => false, 'class' =>'form-control', 'disabled' => 'disabled')); ?>
+<!--                            <input type="file" name="file1">-->
                         </div>
                     </div>
                 </div>
@@ -199,7 +208,7 @@
                     <div class="form-group form-horizontal">
                         <label class="control-label col-md-5">File Name</label>
                         <div class="col-md-6">
-                            <?php echo $this->Form->input('', array('label' => false, 'class' =>'form-control', 'disabled' => 'disabled')); ?>
+                            <?php echo $this->Form->input('', array('label' => false, 'multiple' => 'multiple', 'class' =>'form-control', 'disabled' => 'disabled')); ?>
                             <input type="file" name="file1">
                         </div>
                     </div>
@@ -220,7 +229,7 @@
                     <div class="form-group form-horizontal">
                         <label class="control-label col-md-5">Comments/Remarks</label>
                         <div class="col-md-6">
-                            <?php echo $this->Form->input('', array('label' => false, 'type' => 'text', 'class' =>'form-control')); ?>
+                            <?php echo $this->Form->input('remarks', array('label' => false, 'type' => 'text', 'class' =>'form-control')); ?>
                         </div>
                     </div>
                 </div>
@@ -239,44 +248,18 @@
 </div>
 
 
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-    <!---->
-    <!--            <h3 class="form-section">Draft By</h3>-->
-    <!--            <div class="row">-->
-    <!--                <div class="col-md-6">-->
-    <!--                    <div class="form-group form-horizontal">-->
-    <!--                        <label class="control-label col-md-5">Name in English</label>-->
-    <!--                        <div class="col-md-6">-->
-    <!--                            --><?php //echo $this->Form->input('', array('label' => false, 'class' =>'form-control')); ?>
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <div class="col-md-6">-->
-    <!--                    <div class="form-group form-horizontal">-->
-    <!--                        <label class="control-label col-md-5 pull-left">Name in Bangla</label>-->
-    <!--                        <div class="col-md-6">-->
-    <!--                            --><?php //echo $this->Form->input('', array('label' => false, 'class' =>'form-control')); ?>
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div><br>-->
-
-    <!--            <h3 class="form-section">Draft Date</h3>-->
-    <!--            <div class="row">-->
-    <!--                <div class="col-md-6">-->
-    <!--                    <div class="form-group form-horizontal">-->
-    <!--                        <label class="control-label col-md-5">Name in English</label>-->
-    <!--                        <div class="col-md-6">-->
-    <!--                            --><?php //echo $this->Form->input('', array('label' => false, 'class' =>'form-control')); ?>
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <div class="col-md-6">-->
-    <!--                    <div class="form-group form-horizontal">-->
-    <!--                        <label class="control-label col-md-5 pull-left">Name in Bangla</label>-->
-    <!--                        <div class="col-md-6">-->
-    <!--                            --><?php //echo $this->Form->input('', array('label' => false, 'class' =>'form-control')); ?>
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div><br>-->
+            reader.onload = function (e) {
+                $('#image')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
