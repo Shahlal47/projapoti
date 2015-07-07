@@ -1,6 +1,6 @@
 <div class="portlet light">
     <div class="portlet-title">
-        <div class="caption"><i class="fa fa-table"></i>Dak Nagorik List</div>
+        <div class="caption"><i class="fa fa-table"></i>Daptorik Dak List</div>
         <div class="tools">
             <a href="javascript:" class="collapse"></a>
             <a href="#portlet-config" data-toggle="modal" class="config"></a>
@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group">
-                        <?= $this->Html->link('Add New Dak Nagorik', ['action' => 'add'], ['class' => 'btn btn-default']) ?>
+                        <?= $this->Html->link('New Daptorik Dak', ['action' => 'add'], ['class' => 'btn btn-default']) ?>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -28,27 +28,61 @@
                 </div>
             </div>
         </div>
-        <table class="table table-bordered">
+        <table class="table table-striped table-advance table-hover">
             <thead>
             <tr>
-                <th class="text-center"><?= $this->Paginator->sort('AAAA') ?></th>
-                <th class="text-center"><?= $this->Paginator->sort('AAAA') ?></th>
-                <th class="text-center"><?= $this->Paginator->sort('AAAA') ?></th>
-                <th class="text-center"><?= $this->Paginator->sort('AAAA') ?></th>
-                <th class="actions text-center"><?= __('Actions') ?></th>
+                <th colspan="3">
+                    <input type="checkbox" class="mail-checkbox mail-group-checkbox">
+                    <div class="btn-group">
+                        <a class="btn btn-sm blue dropdown-toggle" href="#" data-toggle="dropdown">
+                            More <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-pencil"></i> Mark as Read </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-ban"></i> Spam </a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-trash-o"></i> Delete </a>
+                            </li>
+                        </ul>
+                    </div>
+                </th>
+                <th class="pagination-control" colspan="3">
+		<span class="pagination-info">
+		1-30 of 789 </span>
+                    <a class="btn btn-sm blue">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="btn btn-sm blue">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($query as $rows): ?>
-                <tr>
-                    <td class="text-center"><?php echo $rows['name_eng']; ?></td>
-                    <td class="text-center"><?php echo $rows['mobile_no']; ?></td>
-                    <td class="text-center"><?php echo $rows['email']; ?></td>
-                    <td class="text-center"><?php echo $rows['remarks']; ?></td>
-                    <td class="actions text-center">
-                        <?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-primary']) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-success']) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
+                <tr class="unread" data-messageid=<?php echo $rows['id']; ?>>
+                    <td class="inbox-small-cells">
+                        <input type="checkbox" class="mail-checkbox">
+                    </td>
+                    <td class="inbox-small-cells">
+                        <i class="fa fa-star"></i>
+                    </td>
+                    <td class="view-message hidden-xs"><?php echo $rows['sarok_no']; ?></td>
+                    <td class="view-message "><?php echo $rows['subject']; ?></td>
+                    <td class="view-message text-right"><?php echo $rows['dak_date']; ?></td>
+                    <td class="actions inbox-small-cells">
+                        <?= $this->Html->link(__(''), ['action' => 'view', $rows['id']], ['class'=>'btn btn-xs fa fa-eye text-primary']) ?>
+                        <?= $this->Html->link(__(''), ['action' => 'edit', $rows['id']], ['class'=>'btn btn-xs fa fa-pencil text-warning']) ?>
+                        <?= $this->Form->postLink(__(''), ['action' => 'delete', $rows['id']], ['class'=>'btn btn-xs fa fa-trash text-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
